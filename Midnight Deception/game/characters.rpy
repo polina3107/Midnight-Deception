@@ -1,0 +1,10 @@
+﻿define sophie = Character("Sophie", color="#e2d300", image = 'sophie')
+define ann = Character("Ann", color="#ad042e", image = 'ann' )
+define daniel = Character("Daniel", color="#85817c", image = 'daniel')
+define miles = Character("Miles", color="#866238", image = 'miles')
+define victor = Character("Victor", color="#383058", image = 'victor')
+define unknown = Character("???", color="#1f0099")
+define voice1 = Character ('Voice 1', color="#7a5408")
+define voice2 = Character ('Voice 2', color="#999999")
+
+define player = Character("[player]", color="#1f0099")
