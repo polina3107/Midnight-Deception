@@ -38,4 +38,3 @@
         xalign 0.95
         yalign 1.0
         anchor (0.5, 1.0)
-

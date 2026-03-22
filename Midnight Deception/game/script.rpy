@@ -1,6 +1,6 @@
-﻿#начало
+﻿#arriving in mansion
 label start:
-    scene outside
+    scene street
     with fade
     $ letters = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZабвгґдеєжзиіїйклмнопрстуфхцчшщьюяАБВГҐДЕЄЖЗИІЇЙКЛМНОПРСТУФХЦЧШЩЬЮЯ- '
     $ player = renpy.input('What is your name?', length = 12, allow = letters).strip()
@@ -9,9 +9,13 @@ label start:
 
     #if player == 'Polina'
         #secret ending
-    '''
-    It was raining when I arrived at the mansion.
 
+    'It was about to rain when I arrived at the mansion.'
+
+    scene house 
+    with fade
+
+    '''
     The house stood tall in the darkness - beautiful, elegant... and somehow unsettling. The warm lights in the windows didn`t make it feel any less intimidating.
 
     Daniel.
@@ -27,7 +31,7 @@ label start:
     But everyone knows that`s not the real reason we`re here.
     '''
 
-    scene living_room
+    scene hall
     with fade
 
     'I step inside.'
@@ -35,6 +39,7 @@ label start:
     'A soft voice greets me.'
 
     show sophie normal
+    with fade
 
     unknown 'Good evening.'
 
@@ -84,9 +89,10 @@ label start:
         'Go to dinner.':
             jump dinner
         'I`d rather look around the house first.':
-            $ suspicion_mc+=1
+            # $ suspicion_mc+=1
             jump lookaround
 
+#going through rooms
 label lookaround:
     scene living_room
     with fade
@@ -95,7 +101,7 @@ label lookaround:
 
     'The living room is enormous - high ceilings, antique furniture, paintings that seem to follow you with their eyes.'
 
-    scene closed 
+    scene daniel_office_door 
 
     'A cabinet catches my attention - locked.'
 
@@ -119,7 +125,7 @@ label lookaround:
 
     menu:
         'Eavesdrop.':
-            $ suspicion_mc+=1
+            # $ suspicion_mc+=1
             jump eavesdrop
         
         'Join the conversation.':
@@ -128,6 +134,7 @@ label lookaround:
         'Leave quietly.':
             jump dinner
 
+#eavesdrop miles and victor
 label eavesdrop:
     scene balcony
 
@@ -176,7 +183,7 @@ label eavesdrop:
 
     jump dinner
             
-
+#join conversation between miles and victor
 label conversation:
     scene balcony
 
@@ -229,13 +236,12 @@ label conversation:
 
     jump dinner
 
-    
-
+#dinner with everyone
 label dinner:
     stop music fadeout 1
     play music main_theme
     
-    scene kitchen
+    scene dining_room
     with fade
     show daniel normal
 
@@ -322,7 +328,7 @@ label dinner:
 
         'Agree with Ann and Miles.':
 
-            $suspicion_mc +=1
+            # $suspicion_mc +=1
 
             player 'I think Ann has a point. If we`re the ones donating, we should decide where the money goes.'
 
@@ -349,3 +355,302 @@ label dinner:
             miles 'Or when they`re tired of being manipulated.'
             
             daniel 'Enough. This isn`t a battlefield. We`re guests here. Let`s not ruin the evening.'
+
+#daniel is murdered, first branch
+label murder_time:
+    scene corridor
+    with fade
+
+    'Dinner ends, but the tension doesn`t.'
+
+    'People stand up one by one, exchanging forced smiles, avoiding eye contact.'
+
+    'No one says it out loud... but everyone feels it.'
+
+    'Something is wrong.'
+
+    scene guest_room
+    with fade
+
+    '''
+    I step into the guest room Daniel prepared for me.
+
+    It`s nice, carefully arranged - almost too perfect.
+
+    Like a hotel room.
+
+    Not like a home.
+
+    I close the door behind me.
+
+    Silence.
+
+    For the first time tonight... I`m alone.
+
+    ...
+
+    Daniel.
+
+    He hasn`t changed.
+
+    Still controlling everything. Even now.
+
+    Even this dinner felt less like an invitation... and more like a test.
+
+    ...What was he planning?
+
+    I sit on the edge of the bed.
+
+    Something about tonight doesn`t make sense.
+
+    The guests. The condition. The way he looked at everyone...
+
+    Like he already knew how this would end.
+
+    ...
+
+    I should probably rest.
+
+    Tomorrow, I can figure this out with a clear head.
+
+    ...
+    '''
+
+    stop music fadeout 1
+
+    play sound "audio/sophia_scream.mp3"
+
+    'A sudden sound cuts through the silence.'
+
+    'A scream.'
+
+
+    'Sharp. Panicked.'
+
+    'Sophie.'
+
+    'My body freezes for a second.'
+
+    'Then—'
+
+    scene corridor
+    with fade
+
+    'The silence of the mansion shatters.'
+
+    'Somewhere, doors open.'
+
+    'Footsteps echo through the hallway.'
+
+    'Something happened.'
+
+    'Something bad.'
+
+    'I step into the corridor... and stop.'
+
+    'What should I do?'
+
+    menu:
+        'Run to Daniel`s office immediately.':
+            jump go_to_office_fast
+
+        'Wait for someone else to go first.':
+            $ suspicion_mc += 1
+            jump go_to_office_late
+
+        'Try to leave the mansion.':
+            jump try_escape
+
+#go to office fast
+label go_to_office_fast:
+
+    scene corridor
+    with fade
+
+    'I don`t hesitate.'
+
+    'My feet move before I can even think.'
+
+    'The corridor feels longer than before.'
+
+    'Voices. Movement. Panic.'
+
+    scene office
+    with fade
+
+    'The door is already open.'
+
+    'People are gathering inside.'
+
+    'And then I see it.'
+
+    show sophie shocked at left3
+    show ann sad at right3
+    show victor nervous at left2
+    show miles angry at right2
+
+    'Sophie stands near the desk, pale, trembling.'
+
+    'On the floor—'
+
+    'Daniel.'
+
+    'Not moving.'
+
+    'Not breathing.'
+
+    'Something cold settles in my chest.'
+
+    'This isn`t a misunderstanding.'
+
+    'This is real.'
+
+    'Daniel is dead.'
+
+    jump first_group_scene
+
+#go to office late
+label go_to_office_late:
+
+    scene corridor
+    with fade
+
+    'I hesitate.'
+
+    'Just for a second.'
+
+    '...or maybe longer.'
+
+    'Footsteps rush past me.'
+
+    'Someone else gets there first.'
+
+    'Only then do I move.'
+
+    scene office
+    with fade
+
+    'When I enter, several people are already inside.'
+
+    'They all turn to look at me.'
+
+    'That look lingers a little too long.'
+
+    '...Noted.'
+
+    show sophie shocked at left3
+    show ann sad at right3
+
+    'Sophie is shaking.'
+
+    'Her voice barely works.'
+
+    sophie 'I... I just came in and— and he was—'
+
+    'I don`t hear the rest.'
+
+    'Because my eyes lock onto the floor.'
+
+    'Daniel.'
+
+    'Dead.'
+
+    'A strange thought crosses my mind—'
+
+    'If I came earlier... would anything be different?'
+
+    jump first_group_scene
+
+#go to mini-game "Escape"
+label try_escape:
+
+    scene hall
+    with fade
+
+    'The scream echoes in my head.'
+
+    'Something inside me twists.'
+
+    'No.'
+
+    'This is wrong.'
+
+    'I shouldn`t be here.'
+
+    'Whatever happened... it has nothing to do with me.'
+
+    'I need to leave.'
+
+    'Now.'
+
+    'I move quickly through the hall, trying to stay quiet.'
+
+    'The front door is right there.'
+
+    'Almost within reach.'
+
+    'If I leave now...'
+
+    'No questions. No involvement.'
+
+    'Just walk away.'
+
+    '...'
+
+    'But my hand freezes on the handle.'
+
+    'Why does this feel like a mistake?'
+
+    jump escape_minigame
+
+label escape_minigame:
+
+    $ escape_active = True
+    $ escape_hits = 0
+    $ escape_time_left = 10.0
+    $ escape_target = 5
+
+    show screen escape_game
+    show screen escape_input
+
+    while True:
+
+        $ escape_current_key = generate_escape_key()
+
+        $ result = ui.interact()
+
+        if result == True:
+            $ escape_hits += 1
+
+        elif result == False:
+
+            # ⬇️ ВАЖЛИВО
+            $ escape_active = False
+            hide screen escape_game
+            hide screen escape_input
+
+            jump escape_lose
+
+        elif result == "timeout":
+
+            # ⬇️ ТЕЖ САМО
+            $ escape_active = False
+            hide screen escape_game
+            hide screen escape_input
+
+            if escape_hits >= escape_target:
+                jump escape_win
+            else:
+                jump escape_lose
+    
+label escape_win:
+    
+    "You managed to escape."
+    # ending 1
+
+
+label escape_lose:
+    
+    $ suspicion_mc += 2
+
+    "You failed to escape."
