@@ -38,3 +38,12 @@
         xalign 0.95
         yalign 1.0
         anchor (0.5, 1.0)
+
+    transform screen_shake:
+        subpixel True
+        parallel:
+            linear 0.05 xoffset -5 yoffset 3
+            linear 0.05 xoffset 4 yoffset -4
+            linear 0.05 xoffset -3 yoffset 2
+            linear 0.05 xoffset 2 yoffset -3
+            repeat
